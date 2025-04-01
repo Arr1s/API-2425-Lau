@@ -4,28 +4,9 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-const data = {
-  'beemdkroon': {
-    id: 'beemdkroon',
-    name: 'Beemdkroon',
-    image: {
-      src: 'https://i.pinimg.com/736x/09/0a/9c/090a9c238e1c290bb580a4ebe265134d.jpg',
-      alt: 'Beemdkroon',
-      width: 695,
-      height: 1080,
-    }
-  },
-  'wilde-peen': {
-    id: 'wilde-peen',
-    name: 'Wilde Peen',
-    image: {
-      src: 'https://mens-en-gezondheid.infonu.nl/artikel-fotos/tom008/4251914036.jpg',
-      alt: 'Wilde Peen',
-      width: 418,
-      height: 600,
-    }
-  }
-}
+const valorantAPI = `https://valorant-api.com/v1/`
+const valorantAgents = (valorantAPI + `agents`)
+const valorantMaps = (valorantAPI + `maps`)
 
 const engine = new Liquid({
   extname: '.liquid',
@@ -39,7 +20,14 @@ app
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
 app.get('/', async (req, res) => {
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: Object.values(data) }));
+  const dataAgents = await fetch(valorantAgents);
+  const Agents = await dataAgents.json();
+  console.log(Agents)
+
+  const dataMaps = await fetch(valorantMaps);
+  const Maps = await dataMaps.json();
+  console.log(Maps);
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', agents: Agents, maps: Maps.data }));
 });
 
 app.get('/plant/:id/', async (req, res) => {

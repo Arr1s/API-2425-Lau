@@ -1,0 +1,17 @@
+<aside class="sidebar">
+    <article>
+        <label for="chooseMap">Choose the map:</label>
+        <select id="chooseMap">
+            {% for map in maps %}
+                {% if map.tacticalDescription == "A/B Sites" %}
+            <option value="{{ map.displayIcon }}">
+                {{ map.displayName }}</option>
+                {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN {% endcomment %}
+             {% endif %}
+            {% endfor %}
+        </select>
+    </article>
+    <article>
+
+    </article>
+</aside>

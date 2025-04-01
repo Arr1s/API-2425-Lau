@@ -7,7 +7,9 @@
 @import '../server/views/index.css';
 
 /* component styling */
-@import '../server/components/card/card.css';
+@import '../server/components/sidebar/sidebar.css';
+@import '../server/components/selectAgent/selectAgent.css';
+@import '../server/components/stratmap/stratmap.css';
 
 body {
   color: black;

@@ -4,14 +4,10 @@
 
 <h1 class="h1">{{ title }}</h1>
 
-<ul class="grid">
-  {% for item in items %}
-    <li>
-      <a href="/plant/{{ item.id }}">
-        {% render 'server/components/card/card.liquid', item: item %}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{% render '../components/sidebar/sidebar.liquid', maps: maps %}
+
+{% render '../components/stratmap/stratmap.liquid', maps: maps %}
+
+{% render '../components/selectAgent/selectAgent.liquid', agents: agents %}
 
 {% endblock %}

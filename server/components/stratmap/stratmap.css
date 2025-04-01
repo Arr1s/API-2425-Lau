@@ -1,0 +1,8 @@
+.stratmap {
+    grid-area: stratmap;
+}
+
+.stratmap img {
+    width: 100%;
+    height: auto;
+}

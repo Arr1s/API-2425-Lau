@@ -1,0 +1,12 @@
+.selectAgent {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: mandatory;
+    display: grid;
+    grid-area: selectAgent;
+}
+
+.abilities img {
+    width: 50%;
+    height: auto;
+}

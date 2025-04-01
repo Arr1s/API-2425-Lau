@@ -1,7 +1,51 @@
+:root {
+  color-scheme: light dark;
+}
+
 header {
   padding: 1rem;
+  background-color: light-dark(white, black);
+  color: light-dark(black, white);
+}
+
+.homepage {
+  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "sidebar"
+    "stratmap"
+    "selectAgent" ;
+    container-type: inline-size;
+    container-name: --homepage;
+    & p {
+      color: blue;
+    }
+}
+
+p {
+  color: light-dark(black, white);
+}
+
+ul {
+  display: flex;
 }
 
 footer {
   padding: 1rem;
+}
+
+@container --homepage (inline-size > 30em) {
+  .homepage div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+    'sidebar stratmap'
+    'selectAgent selectAgent';
+    &   p {
+      color: pink;
+    }
+  }
+
 }
