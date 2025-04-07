@@ -1,4 +1,5 @@
 .stratmap {
+    position: relative;
     grid-area: stratmap;
 }
 

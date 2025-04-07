@@ -3,14 +3,15 @@
         {% for agent in agents.data %}
           {% if agent.isPlayableCharacter == true %}
           <li class="agentCard">
+            <ul class="abilities">
+                {% for ability in agent.abilities %}
+                    <li><img id="{{ agent.uuid }}-{{ forloop.index }}" class="ability" src={{ ability.displayIcon }} alt="" draggable="true"></li>
+                {% endfor %}
+              </ul>
               <p>{{ agent.displayName }}</p>
               <img src={{ agent.displayIcon }} alt="" >
               <p>{{ agent.role.displayName }}</p>
-              <ul class="abilities">
-                {% for ability in agent.abilities %}
-                    <li><img class="ability" src={{ ability.displayIcon }} alt="" draggable="true" ondragstart="dragstartHandler(event)"></li>
-                {% endfor %}
-              </ul>
+
           </li>
           {% endif %}
         {% endfor %}
