@@ -1,12 +1,35 @@
 .selectAgent {
-    display: flex;
     overflow-x: scroll;
-    scroll-snap-type: mandatory;
     display: grid;
     grid-area: selectAgent;
+    position: relative;
 }
 
+.agentCard {
+    /* anchor-name: --anchor-abilities; */
+}
+
+.abilities {
+    width: fit-content;
+    overflow: visible;
+    background-color:cornflowerblue;
+    padding: 0.5rem;
+    /* position-anchor: --anchor-abilities;
+    position-area: left center; */
+    position: absolute;
+}
+
+
 .abilities img {
-    width: 50%;
+    width: 3em;
     height: auto;
+}
+
+.abilities li {
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
 }

@@ -4,9 +4,14 @@
           {% if agent.isPlayableCharacter == true %}
           <li class="agentCard">
             <ul class="abilities">
+              
                 {% for ability in agent.abilities %}
-                    <li><img id="{{ agent.uuid }}-{{ forloop.index }}" class="ability" src={{ ability.displayIcon }} alt="" draggable="true"></li>
+                  {% if ability.slot != "Passive" %}
+                    <li class="ability"><img id="{{ agent.uuid }}-{{ forloop.index }}"  src={{ ability.displayIcon }} alt="" draggable="true">
+                    <p class="abilityName">{{ ability.displayName }}</p></li>
+                  {% endif %}
                 {% endfor %}
+              
               </ul>
               <p>{{ agent.displayName }}</p>
               <img src={{ agent.displayIcon }} alt="" >

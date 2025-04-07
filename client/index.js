@@ -6,6 +6,7 @@ const draggableAbilities = document.querySelectorAll(".ability");
 const dropZone = document.getElementById("target");
 
 let draggedItem = null;
+let cloneDraggy = null
 
 if (draggableAbilities) {
   draggableAbilities.forEach((dragItem) => {
@@ -34,7 +35,8 @@ function dropHandler(ev) {
   // Get the id of the target and add the moved element to the target's DOM
 //   console.log(data);
 
-    const cloneDraggy = draggedItem.cloneNode(true)
+    cloneDraggy = draggedItem.cloneNode(true)
+    cloneDraggy.classList.add("clonedraggy");
 
     cloneDraggy.style.position = 'absolute'
     cloneDraggy.style.width = draggedItem.offsetWidth
@@ -44,7 +46,20 @@ function dropHandler(ev) {
 
   dropZone.appendChild(cloneDraggy);
   draggedItem = null;
+  console.log(cloneDraggy)
 }
+
+
+
+const clearButton = document.getElementById("clearAbilities");
+
+if (clearButton) {
+  clearButton.addEventListener("click", () => {
+    const clones = document.querySelectorAll(".clonedraggy");
+    clones.forEach((clone) => clone.remove());
+  });
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const agentCards = document.querySelectorAll(".agentCard");
@@ -65,14 +80,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   agentCards.forEach((card) => {
     const abilities = card.querySelector(".abilities");
+  
+    // abilities en abilityName in eerste instantie verbergen
     abilities.style.display = "none";
-
-    card.addEventListener("mouseover", () => {
+  
+    const abilityElements = abilities.querySelectorAll(".ability");
+  
+    abilityElements.forEach((ability) => {
+      const abilityName = ability.querySelector(".abilityName");
+      if (abilityName) {
+        abilityName.style.visibility = "hidden"; // verberg standaard
+  
+        ability.addEventListener("mouseenter", () => {
+          abilityName.style.visibility = "visible"; // maak zichtbaar
+        });
+  
+        ability.addEventListener("mouseleave", () => {
+          abilityName.style.visibility = "hidden";
+        });
+      }
+    });
+  
+    card.addEventListener("mouseenter", () => {
       abilities.style.display = "flex";
     });
-
-    card.addEventListener("mouseout", () => {
+  
+    card.addEventListener("mouseleave", () => {
       abilities.style.display = "none";
+  
+      // Verberg ook alle abilityNames wanneer je weggaat van de hele kaart
+      abilityElements.forEach((ability) => {
+        const abilityName = ability.querySelector(".abilityName");
+        if (abilityName) {
+          abilityName.style.visibility = "hidden";
+        }
+      });
     });
   });
+  
+  
+
+
+  select.onchange();
 });
+
+

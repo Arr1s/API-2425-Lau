@@ -6,13 +6,13 @@
             {% if map.tacticalDescription == "A/B Sites" %}
             <option value="{{ map.displayIcon }}">
                 {{ map.displayName }}</option>
-            {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN {% endcomment
-            %}
+             {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN  {% endcomment %}
             {% endif %}
             {% endfor %}
         </select>
     </article>
     <article>
-
+            <label for="clearAbilities">Verwijder abilities</label>
+            <button id="clearAbilities" class="clearAbilities">Verwijder</button>
     </article>
 </aside>

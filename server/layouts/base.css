@@ -6,20 +6,38 @@ header {
   padding: 1rem;
   background-color: light-dark(white, black);
   color: light-dark(black, white);
+  display: flex;
 }
+
+header ul {
+  justify-content: space-around;
+  width: 100%;
+}
+
 
 .homepage {
   display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-    "sidebar"
-    "stratmap"
-    "selectAgent" ;
-    container-type: inline-size;
-    container-name: --homepage;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: 
+      "sidebar"
+      "stratmap"
+      "selectAgent" ;
+      container-type: inline-size;
+      container-name: --homepage;
     & p {
       color: blue;
+    }
+    & div {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: 
+      "sidebar"
+      "stratmap"
+      "selectAgent" ;
+      container-type: inline-size;
+      container-name: --homepage;
     }
 }
 
@@ -37,13 +55,14 @@ footer {
 
 @container --homepage (inline-size > 30em) {
   .homepage div {
+    color: blue;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 2fr auto;
     grid-template-areas:
     'sidebar stratmap'
     'selectAgent selectAgent';
-    &   p {
+    & p {
       color: pink;
     }
   }
