@@ -22,11 +22,9 @@ app
 app.get('/', async (req, res) => {
   const dataAgents = await fetch(valorantAgents);
   const agents = await dataAgents.json();
-  console.log(agents)
 
   const dataMaps = await fetch(valorantMaps);
   const Maps = await dataMaps.json();
-  // console.log(Maps);
   return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', agents: agents, maps: Maps.data }));
 });
 

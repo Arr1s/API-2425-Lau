@@ -58,7 +58,7 @@ footer {
     color: blue;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 2fr auto;
+    grid-template-rows: 1fr auto;
     grid-template-areas:
     'sidebar stratmap'
     'selectAgent selectAgent';

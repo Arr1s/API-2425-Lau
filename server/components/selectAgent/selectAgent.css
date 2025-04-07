@@ -17,8 +17,8 @@
     /* position-anchor: --anchor-abilities;
     position-area: left center; */
     position: absolute;
+    margin-top: -3em;
 }
-
 
 .abilities img {
     width: 3em;
@@ -28,8 +28,14 @@
 .abilities li {
     padding: 0 0.5rem;
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
+}
 
+figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+figcaption {
+    color: white;
 }
