@@ -1,6 +1,36 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<h1 class="h1">{{ item.name }}</h1>
-<img src="{{ item.image.src }}" alt="{{ item.image.alt }}" width="{{ item.image.width }}" height="{{ item.image.height }}" />
+
+<section>
+    <article>
+        <h2>{{ agent.displayName }}</h2>
+        <p>{{ agent.description }} </p>
+        <figure>
+            <img src={{ agent.role.displayIcon }} alt="">
+            <figcaption>{{ agent.role.displayName }}</figcaption>
+        </figure>
+    <h3>Abilities:</h3>
+    <ul>
+        {% for ability in agent.abilities %}
+            <li>
+            <h4>{{ ability.displayName }}</h4>
+            <img src={{ ability.displayIcon }} alt="">
+            <p>{{ ability.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="portraitBackground">
+        <img src={{ agent.background }} alt="">
+        <img src={{ agent.fullPortrait }} alt="">
+    </div>
+   
+    </article>
+        <img src={{ agent. }} alt="">
+</section>
+
+
+
+{% render '../components/streamCapture/streamCapture.liquid' %}
+
 {% endblock %}

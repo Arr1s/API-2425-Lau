@@ -1,4 +1,5 @@
 .selectAgent {
+    --agent-width: 150px;
     overflow-x: scroll;
     display: grid;
     grid-area: selectAgent;
@@ -6,36 +7,34 @@
 }
 
 .agentCard {
+    width: var(--agent-width);
+    img {
+        width: 100%;
+        height: auto;
+    }
     /* anchor-name: --anchor-abilities; */
 }
 
 .abilities {
-    width: fit-content;
-    overflow: visible;
-    background-color:cornflowerblue;
-    padding: 0.5rem;
-    /* position-anchor: --anchor-abilities;
-    position-area: left center; */
     position: absolute;
-    margin-top: -3em;
-}
-
-.abilities img {
-    width: 3em;
-    height: auto;
-}
-
-.abilities li {
-    padding: 0 0.5rem;
+    background-color: cornflowerblue;
     display: flex;
-}
+    max-width: calc(var(--agent-width) * 1.5);
+    li {
+        position: relative;
+        width: 25%;
+    }
+    figure {
+        padding: 1rem;
+    }
+    figcaption {
+        color: white;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.5em;
+        white-space: nowrap;
+    }
 
-figure {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-figcaption {
-    color: white;
 }

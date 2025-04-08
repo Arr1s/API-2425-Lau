@@ -4,6 +4,43 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-img {
-  height: 15vh;
+.strategy {
+  display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: 
+      "sidebar"
+      "stratmap"
+      "selectAgent" ;
+      container-type: inline-size;
+      container-name: --strategy;
+    & p {
+      color: blue;
+    }
+    & div {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: 
+      "sidebar"
+      "stratmap"
+      "selectAgent" ;
+      container-type: inline-size;
+      container-name: --strategy;
+    }
+}
+
+@container --strategy (inline-size > 30em) {
+  .homepage div {
+    color: blue;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    'sidebar stratmap'
+    'selectAgent selectAgent';
+    & p {
+      color: pink;
+    }
+  }
 }

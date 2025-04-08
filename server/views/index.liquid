@@ -1,13 +1,13 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
+<main class="homepage">
+    <div>
+        <h1 class="h1">{{ title }}</h1>
 
-<h1 class="h1">{{ title }}</h1>
+        {% render '../components/createStrategy/createStrategy.liquid', maps: maps %}
 
-{% render '../components/sidebar/sidebar.liquid', maps: maps %}
+        
+        {% endblock %}
+    </div>
 
-{% render '../components/stratmap/stratmap.liquid', maps: maps %}
-
-{% render '../components/selectAgent/selectAgent.liquid', agents: agents %}
-
-{% endblock %}

@@ -1,0 +1,12 @@
+
+main section ul img {
+    width: 15vh;
+}
+
+.portraitBackground {
+    position: relative;
+}
+
+.portraitBackground img {
+    position: absolute;
+}

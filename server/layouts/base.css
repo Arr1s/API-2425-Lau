@@ -15,35 +15,7 @@ header ul {
 }
 
 
-.homepage {
-  display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas: 
-      "sidebar"
-      "stratmap"
-      "selectAgent" ;
-      container-type: inline-size;
-      container-name: --homepage;
-    & p {
-      color: blue;
-    }
-    & div {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas: 
-      "sidebar"
-      "stratmap"
-      "selectAgent" ;
-      container-type: inline-size;
-      container-name: --homepage;
-    }
-}
 
-p {
-  color: light-dark(black, white);
-}
 
 ul {
   display: flex;
@@ -53,18 +25,4 @@ footer {
   padding: 1rem;
 }
 
-@container --homepage (inline-size > 30em) {
-  .homepage div {
-    color: blue;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr auto;
-    grid-template-areas:
-    'sidebar stratmap'
-    'selectAgent selectAgent';
-    & p {
-      color: pink;
-    }
-  }
 
-}

@@ -1,0 +1,12 @@
+<section>
+    <h2>Create your own strategy</h2>
+    <p>Start creating your own strategies for valorant. And some other text. I don't wanna type that much, leave me alone.</p>
+    
+    <h2>Choose your map</h2>
+        {% for map in maps %}
+        {% if map.tacticalDescription == "A/B Sites" %}
+            <a href="/maps/{{ map.uuid }}"> {{ map.displayName }}</a>
+         {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN  {% endcomment %}
+        {% endif %}
+        {% endfor %}
+</section>

@@ -39,6 +39,8 @@ function dropHandler(ev) {
     // Verplaats bestaande clone
     draggedItem.style.top = (ev.offsetY - 15) + 'px';
     draggedItem.style.left = (ev.offsetX - 15) + 'px';
+    console.log(cloneDraggy.style.top);
+    console.log(cloneDraggy.style.left);
   } else {
     // Maak een nieuwe clone
     cloneDraggy = draggedItem.cloneNode(true);
@@ -47,12 +49,14 @@ function dropHandler(ev) {
     cloneDraggy.addEventListener("dragstart", dragstartHandler);
 
     cloneDraggy.style.position = 'absolute';
-    cloneDraggy.style.width = (draggedItem.offsetWidth - 20) + 'px';
-    cloneDraggy.style.height = (draggedItem.offsetHeight - 20) + 'px';
+    cloneDraggy.style.width = draggedItem.offsetWidth + 'px';
+    cloneDraggy.style.height = draggedItem.offsetHeight + 'px';
     cloneDraggy.style.top = (ev.offsetY - 15) + 'px';
     cloneDraggy.style.left = (ev.offsetX - 15) + 'px';
 
     dropZone.appendChild(cloneDraggy);
+    console.log(cloneDraggy.style.top);
+    console.log(cloneDraggy.style.left);
   }
 
   draggedItem = null;

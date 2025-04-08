@@ -1,18 +1,26 @@
 <aside class="sidebar">
     <article>
-        <label for="chooseMap">Choose the map:</label>
-        <select id="chooseMap">
-            {% for map in maps %}
-            {% if map.tacticalDescription == "A/B Sites" %}
-            <option value="{{ map.displayIcon }}">
-                {{ map.displayName }}</option>
-             {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN  {% endcomment %}
-            {% endif %}
-            {% endfor %}
-        </select>
+        <form method="post" actions="/maps/{{ map.uuid }}">
+            <label for="chooseMap">Choose the map:</label>
+            <select id="chooseMap" name="chosenMap">
+                {% for map in maps %}
+                {% if map.tacticalDescription == "A/B Sites" %}
+                <option value="{{ map.uuid }}">
+                    {{ map.displayName }}</option>
+                 {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN  {% endcomment %}
+                {% endif %}
+                {% endfor %}
+            </select>
+            <button type="submit">Kies map</button>
+    
+        </form>
+       
     </article>
     <article>
             <label for="clearAbilities">Verwijder abilities</label>
             <button id="clearAbilities" class="clearAbilities">Verwijder</button>
+    </article>
+    <article>
+
     </article>
 </aside>

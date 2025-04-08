@@ -1,7 +1,19 @@
 <section class="selectAgent">
-    <ul>
-        {% for agent in agents.data %}
+  <search>
+    <form method="get">
+      {% comment %} Name zorgt voor key form + action is voor andere route {% endcomment %}
+    <label for="searchAgent">Zoek een agent:</label>
+      <input type="search" id="searchAgent" name="search" value="{{ query }}" />
+      <button type="submit">Zoek</button>
+    </form>
+  </search>
+    <ul id="agentOutput">
+        {% for agent in agents %}
           {% if agent.isPlayableCharacter == true %}
+            <form method="get" action="/agents/{{ agent.uuid }}">
+              <button id="infoAgent" type="submit">ℹ️</button>
+            </form>
+
           <li class="agentCard">
             <ul class="abilities">
               

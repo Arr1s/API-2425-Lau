@@ -5,18 +5,27 @@
 /*.layout and view styling */
 @import '../server/layouts/base.css';
 @import '../server/views/index.css';
+@import '../server/views/detail.css';
 
 /* component styling */
 @import '../server/components/sidebar/sidebar.css';
 @import '../server/components/selectAgent/selectAgent.css';
 @import '../server/components/stratmap/stratmap.css';
+@import '../server/components/streamCapture/streamCapture.css';
+
+:root {
+  --color-text: white;
+}
 
 body {
-  color: black;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 main {
   padding: 1rem;
+}
+
+h1, h2, p, figcaption {
+  color: var(--color-text);
 }
