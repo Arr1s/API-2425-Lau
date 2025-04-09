@@ -5,7 +5,7 @@
     <div>
         <h1 class="h1">{{ title }}</h1>
 
-        {% render '../components/createStrategy/createStrategy.liquid', maps: maps %}
+        {% render '../components/createStrategy/createStrategy.liquid', maps: maps, userID: userID %}
 
         
         {% endblock %}

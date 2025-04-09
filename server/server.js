@@ -4,6 +4,23 @@ import bodyParser from 'body-parser'; // Import json middleware from body-parser
 import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { Low, JSONFile } from 'lowdb';
+
+// Verkrijg het pad van de huidige map
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Gebruik het pad om het bestand te maken
+const file = join(__dirname, 'db.json');
+const adapter = new JSONFile(file);
+const db = new Low(adapter);
+
+await db.read();
+db.data ||= [];
+
+await db.write();
 
 const valorantAPI = `https://valorant-api.com/v1/`;
 const valorantAgents = valorantAPI + `agents`;
@@ -25,8 +42,28 @@ app
     const dataMaps = await fetch(valorantMaps);
     const maps = await dataMaps.json();
     // console.log(maps);
+    const userID = new Date().getTime();
+    console.log(userID);
+    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data, userID }));
+  });
 
-    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data }));
+  app.post('/', async (req, res) => {
+    const { userID, map } = req.body;
+    console.log(userID, map);
+    await db.read();
+  
+   
+      db.data.push({
+        id: userID,
+        name: 'map-' + userID,
+        map: map,
+        markers: [] 
+      });
+  
+    // Wegschrijven naar disk
+    await db.write();
+    console.log('Saved data:', db.data);
+    return res.redirect(`/map/${userID}/`);
   });
 
 // app.get('/strategy/', async (req, res) => {  
@@ -53,13 +90,15 @@ app
 //   return res.send(renderTemplate('server/views/detail.liquid', { title: `Video try out` }));
 // });
 
-app.get('/maps/:uuid', async (req, res) => {
+app.get('/map/:id/', async (req, res) => {
+  const id = req.params.id;
+  const strategy = db.data.find((item) => item.id == id);
 
-  
-  const id = req.params.uuid;
+
   const dataMaps = await fetch(valorantMaps);
   const maps = await dataMaps.json();
-  const selectedMap = maps.data.find(map => map.uuid === id);
+  const selectedMap = maps.data.find(map => map.uuid === strategy.map);
+  console.log({selectedMap});
 
   const searchQuery = req.query.search;
   const dataAgents = await fetch(valorantAgents);
