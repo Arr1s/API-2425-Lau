@@ -1,3 +1,11 @@
 <section class="stratmap" id="target">
-    <img src="https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/displayicon.png" id="shownMap" alt="The current map that is being showed"  >
+    {% comment %} <form method="post" action="/map/{{ strategyID }}"> {% endcomment %}
+    {% for map in maps %}
+        {% if strategy.mapID == map.uuid %}
+            <img src={{ map.displayIcon }} id="shownMap" alt="The current map that is being showed"  >
+        {% endif %}
+        {% endfor %}
+       
+        {% comment %} <button type="submit">Save</button>
+    </form> {% endcomment %}
 </section>

@@ -2,15 +2,16 @@
 
 {% block content %}
 <main class="strategy">
+    <h1 class="h1">{{ strategy.name }}</h1>
     <div>
-        <h1 class="h1">{{ title }}</h1>
-
-        {% render '../components/sidebar/sidebar.liquid', maps: maps %}
         
-        {% render '../components/stratmap/stratmap.liquid', maps: maps %}
+
+        {% render '../components/sidebar/sidebar.liquid', maps: maps, strategy: strategy %}
+        
+        {% render '../components/stratmap/stratmap.liquid', maps: maps, strategy: strategy %}
         
         {% render '../components/selectAgent/selectAgent.liquid', agents: agents, query: query %}
         
         {% endblock %}
     </div>
-
+</main>

@@ -42,64 +42,70 @@ app
     const dataMaps = await fetch(valorantMaps);
     const maps = await dataMaps.json();
     // console.log(maps);
-    const userID = new Date().getTime();
-    console.log(userID);
-    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data, userID }));
+    const strategyID = new Date().getTime();
+    console.log(strategyID);
+    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data, strategyID }));
   });
 
   app.post('/', async (req, res) => {
-    const { userID, map } = req.body;
-    console.log(userID, map);
+    const { strategyID, mapID, strategyName } = req.body;
     await db.read();
   
    
       db.data.push({
-        id: userID,
-        name: 'map-' + userID,
-        map: map,
+        id: strategyID,
+        name: strategyName,
+        mapID: mapID,
         markers: [] 
       });
   
     // Wegschrijven naar disk
     await db.write();
-    console.log('Saved data:', db.data);
-    return res.redirect(`/map/${userID}/`);
+    return res.redirect(`/map/${strategyID}/`);
   });
-
-// app.get('/strategy/', async (req, res) => {  
-//   const searchQuery = req.query.search;
-//   const dataAgents = await fetch(valorantAgents);
-//   const agents = await dataAgents.json();
-  
-//   let filteredAgents = agents.data;
-//   if (searchQuery && agents) {
-//     // console.log(agents);
-//     filteredAgents = agents.data.filter(agent => {
-//       return agent.displayName.includes(searchQuery)
-//     })
-//   }
-
-//   const dataMaps = await fetch(valorantMaps);
-//   const maps = await dataMaps.json();
-
-//   return res.send(renderTemplate('server/views/strategy.liquid', { title: 'Strategy', agents: filteredAgents, maps: maps.data, query: searchQuery }));
-// });
-
-
-// app.get('/video/', async (req, res) => {
-//   return res.send(renderTemplate('server/views/detail.liquid', { title: `Video try out` }));
-// });
 
 app.get('/map/:id/', async (req, res) => {
   const id = req.params.id;
   const strategy = db.data.find((item) => item.id == id);
-
+  // const strategyNotFound = alert('StrategyID not found');
+  console.log("strategy:", strategy)
+  if (!strategy) {
+    return res.redirect('/', { status: 402 });
+  }
 
   const dataMaps = await fetch(valorantMaps);
   const maps = await dataMaps.json();
-  const selectedMap = maps.data.find(map => map.uuid === strategy.map);
-  console.log({selectedMap});
 
+  return res.send(renderTemplate('server/views/strategy.liquid', { maps: maps.data, strategy: strategy }));
+});
+
+app.post('/map/:id', async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  const mapID = req.body;
+  console.log(mapID);
+  if (!mapID) {
+    return res.status(400).send('No data provided');
+  }
+
+//   await db.read();
+  
+   
+//   db.data.push({
+//     id: strategyID,
+//     name: strategyName,
+//     map: map,
+//     markers: [] 
+//   });
+
+// // Wegschrijven naar disk
+// await db.write();
+
+  return res.redirect(`/map/${id}/`)
+});
+
+app.get ('/map/:id/search', async (req, res) => {
   const searchQuery = req.query.search;
   const dataAgents = await fetch(valorantAgents);
   const agents = await dataAgents.json();
@@ -111,13 +117,8 @@ app.get('/map/:id/', async (req, res) => {
       return agent.displayName.includes(searchQuery)
     })
   }
-
-  if (!selectedMap) {
-    return res.status(404).send('Not found');
-  }
-  return res.send(renderTemplate('server/views/strategy.liquid', { title: 'Strategy', agents: filteredAgents, maps: maps.data, query: searchQuery, map: selectedMap }));
-}
-);
+  return res.send(renderTemplate('server/views/strategy.liquid', { title: 'Search agent', agents: filteredAgents, query: searchQuery }));
+});
 
 const renderTemplate = (template, data) => {
   const templateData = {

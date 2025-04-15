@@ -10,9 +10,9 @@
     <ul id="agentOutput">
         {% for agent in agents %}
           {% if agent.isPlayableCharacter == true %}
-            <form method="get" action="/agents/{{ agent.uuid }}">
+            {% comment %} <form method="get" action="/agents/{{ agent.uuid }}">
               <button id="infoAgent" type="submit">ℹ️</button>
-            </form>
+            </form> {% endcomment %}
 
           <li class="agentCard">
             <ul class="abilities">

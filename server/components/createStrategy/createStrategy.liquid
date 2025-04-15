@@ -1,10 +1,9 @@
 <section>
     <h2>Create your own strategy</h2>
     <p>Start creating your own strategies for valorant. And some other text. I don't wanna type that much, leave me alone.</p>
-    <p>{{ userID }}</p>
     <form method="post" actions="/">
     <label for="chooseMap">Choose the map:</label>
-    <select id="chooseMap" name="map">
+    <select id="chooseMap" name="mapID">
         {% for map in maps %}
         {% if map.tacticalDescription == "A/B Sites" %}
         <option value="{{ map.uuid }}">{{ map.displayName }}</option>
@@ -13,7 +12,8 @@
         {% endif %}
         {% endfor %}
     </select>
-    <input type="hidden" name="userID" value={{ userID }} />
+    <input type="text" name="strategyName" placeholder="Strategy name" required />
+    <input type="hidden" name="strategyID" value={{ strategyID }} />
     <button type="submit">Kies map</button>
 
 </form>

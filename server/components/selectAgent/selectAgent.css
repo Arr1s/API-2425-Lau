@@ -26,6 +26,7 @@
     }
     figure {
         padding: 1rem;
+        width: 100%;
     }
     figcaption {
         color: white;
@@ -36,5 +37,8 @@
         font-size: 0.5em;
         white-space: nowrap;
     }
+}
 
+.ability img {
+    width: 100%;
 }
