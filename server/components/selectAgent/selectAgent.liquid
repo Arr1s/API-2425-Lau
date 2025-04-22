@@ -1,6 +1,6 @@
 <section class="selectAgent">
   <search>
-    <form method="get">
+    <form method="post" action="/map/{{ strategy.id }}/search">
       {% comment %} Name zorgt voor key form + action is voor andere route {% endcomment %}
     <label for="searchAgent">Zoek een agent:</label>
       <input type="search" id="searchAgent" name="search" value="{{ query }}" />

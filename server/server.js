@@ -64,61 +64,119 @@ app
     return res.redirect(`/map/${strategyID}/`);
   });
 
+
+
+
 app.get('/map/:id/', async (req, res) => {
   const id = req.params.id;
   const strategy = db.data.find((item) => item.id == id);
   // const strategyNotFound = alert('StrategyID not found');
-  console.log("strategy:", strategy)
   if (!strategy) {
     return res.redirect('/', { status: 402 });
   }
 
+  const markers = db.data.find(item => item.id === id).markers
+  console.log("markers opnieuw:", markers);
+  if (!markers) {
+    console.log("No markers found");
+  }
+
+
   const dataMaps = await fetch(valorantMaps);
   const maps = await dataMaps.json();
 
-  return res.send(renderTemplate('server/views/strategy.liquid', { maps: maps.data, strategy: strategy }));
-});
-
-app.post('/map/:id', async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-
-  const mapID = req.body;
-  console.log(mapID);
-  if (!mapID) {
-    return res.status(400).send('No data provided');
-  }
-
-//   await db.read();
-  
-   
-//   db.data.push({
-//     id: strategyID,
-//     name: strategyName,
-//     map: map,
-//     markers: [] 
-//   });
-
-// // Wegschrijven naar disk
-// await db.write();
-
-  return res.redirect(`/map/${id}/`)
-});
-
-app.get ('/map/:id/search', async (req, res) => {
   const searchQuery = req.query.search;
   const dataAgents = await fetch(valorantAgents);
   const agents = await dataAgents.json();
   
   let filteredAgents = agents.data;
   if (searchQuery && agents) {
-    // console.log(agents);
-    filteredAgents = agents.data.filter(agent => {
-      return agent.displayName.includes(searchQuery)
-    })
+    const query = searchQuery.toLowerCase();
+    filteredAgents = agents.data.filter(agent =>
+      agent.displayName.toLowerCase().includes(query)
+    );
   }
-  return res.send(renderTemplate('server/views/strategy.liquid', { title: 'Search agent', agents: filteredAgents, query: searchQuery }));
+
+  return res.send(renderTemplate('server/views/strategy.liquid', { maps: maps.data, strategy: strategy, agents: filteredAgents, query: searchQuery, markers: markers }));
 });
+
+app.post('/map/:id', async (req, res) => {
+  const id = req.params.id;
+
+  const mapID = req.body.mapID;
+  console.log(mapID);
+  if (!mapID) {
+    return res.status(400).send('No data provided');
+  }
+
+  await db.read()
+
+  // Find the strategy by id (remember id is likely a string)
+  const strategy = db.data.find(item => item.id === id)
+
+  if (!strategy) {
+    return res.status(404).send('Strategy not found')
+  }
+
+  // Update only the mapID
+  strategy.mapID = mapID
+
+  await db.write()
+  console.log('Updated strategy:', strategy)
+
+  return res.redirect(`/map/${id}/`)
+});
+
+
+
+
+
+app.post ('/map/:id/search', async (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+
+  const searchQuery = req.body.search;
+  console.log(searchQuery);
+
+  // return res.send(renderTemplate('server/views/strategy.liquid', { title: 'Search agent', agents: filteredAgents, query: searchQuery }));
+  return res.redirect(`/map/${id}/?search=${searchQuery}`);
+});
+
+
+
+app.post('map/:id/addmarker', async (req, res) => {
+  const id = req.params.id;
+  const { x, y, markerID, type, agentID } = req.body;
+
+  const dataAgents = await fetch(valorantAgents);
+  const agents = await dataAgents.json();
+  // await db.read();
+
+  // Find the strategy by id (remember id is likely a string)
+  const strategy = db.data.find(item => item.id === id)
+
+  if (!strategy) {
+    return res.status(404).send('Strategy not found')
+  }
+
+  // Update only the mapID
+  strategy.markers.push({
+    markerID: markerID,
+    x: x,
+    y: y,
+    type: type,
+    agentID: agentID,
+    agent: agents.data.find(agent => agent.uuid === agentID),
+    ability: agents.data.find(agent => agent.uuid === agentID).abilities.find(ability => ability.slot === type)
+  })
+
+  await db.write()
+  console.log('Updated strategy:', strategy)
+
+  return res.redirect(`/map/${id}/`)
+});
+
+
 
 const renderTemplate = (template, data) => {
   const templateData = {

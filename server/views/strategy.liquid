@@ -8,9 +8,9 @@
 
         {% render '../components/sidebar/sidebar.liquid', maps: maps, strategy: strategy %}
         
-        {% render '../components/stratmap/stratmap.liquid', maps: maps, strategy: strategy %}
+        {% render '../components/stratmap/stratmap.liquid', maps: maps, strategy: strategy, markers: markers %}
         
-        {% render '../components/selectAgent/selectAgent.liquid', agents: agents, query: query %}
+        {% render '../components/selectAgent/selectAgent.liquid', agents: agents, query: query, strategy: strategy %}
         
         {% endblock %}
     </div>

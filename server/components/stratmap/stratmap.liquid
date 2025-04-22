@@ -1,11 +1,26 @@
 <section class="stratmap" id="target">
-    {% comment %} <form method="post" action="/map/{{ strategyID }}"> {% endcomment %}
+  
     {% for map in maps %}
         {% if strategy.mapID == map.uuid %}
             <img src={{ map.displayIcon }} id="shownMap" alt="The current map that is being showed"  >
         {% endif %}
         {% endfor %}
-       
-        {% comment %} <button type="submit">Save</button>
-    </form> {% endcomment %}
+
+    {% for mark in markers %}
+        {% if mark.type != empty %}
+            <img id="{{ mark.agentID }}" src="{{ mark.ability.displayIcon }}" alt="ability" draggable="true" style="position: absolute; width: 56px; height: 56px; top: {{ mark.y }}px; left:  {{ mark.x }}px;">
+        {% else %}
+            <img id="{{ mark.agentID }}" src="{{ mark.agent.displayIcon }}" alt="agent" draggable="true" style="position: absolute; width: 56px; height: 56px; top: {{ mark.y }}px; left:  {{ mark.x }}px;">
+      
+        {% endif %}
+        {% endfor %}
+
+    <form method="post" action="/map/{{ strategy.id }}/addmarker">
+       <input type="number" name="markerID" />
+       <input type="text" name="type" />
+       <input type="number" name="x" />
+       <input type="number" name="y" />
+       <input type="text" name="agentID" />
+     <button type="submit">Save</button>
+    </form> 
 </section>

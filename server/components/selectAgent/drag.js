@@ -57,6 +57,7 @@ function dropHandler(ev) {
     dropZone.appendChild(cloneDraggy);
     console.log(cloneDraggy.style.top);
     console.log(cloneDraggy.style.left);
+    console.log(cloneDraggy);
   }
 
   draggedItem = null;

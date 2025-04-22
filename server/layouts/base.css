@@ -3,26 +3,30 @@
 }
 
 header {
-  padding: 1rem;
   background-color: light-dark(white, black);
   color: light-dark(black, white);
+  font-size: 1.5rem;
+  height: fit-content;
   display: flex;
+  & ul {
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    & li {
+      padding: 1rem;
+    }
+  }
+  & a {
+    text-decoration: none;
+    color: light-dark(black, white);
+    &:hover {
+      background-color: darkgrey;
+      color: white;
+    }
+  }
 }
-
-header ul {
-  justify-content: space-around;
-  width: 100%;
-}
-
-
-
 
 ul {
   display: flex;
 }
-
-footer {
-  padding: 1rem;
-}
-
 

@@ -14,9 +14,6 @@
       "selectAgent" ;
       container-type: inline-size;
       container-name: --strategy;
-    & p {
-      color: blue;
-    }
     & div {
       display: grid;
       grid-template-columns: 1fr;
@@ -30,17 +27,29 @@
     }
 }
 
-@container --strategy (inline-size > 30em) {
+@container --strategy (inline-size > 40em) {
   .strategy div {
-    color: blue;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:
     'sidebar stratmap'
     'selectAgent selectAgent';
-    & p {
-      color: pink;
-    }
   }
 }
+
+.homepage {
+  & section {
+    width: 100vw;
+  }
+  & article {
+    max-width: 60vw;
+    min-width: 20vw;
+    & p {
+      margin-bottom: 0.5rem;
+    }
+  }
+ 
+  
+}
+ 

@@ -1,9 +1,11 @@
 .stratmap {
     position: relative;
     grid-area: stratmap;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.stratmap img {
-    width: auto;
-    max-height: 80vh
+.stratmap #shownMap {
+    max-height: 70vh;
 }

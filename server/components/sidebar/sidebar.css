@@ -1,4 +1,9 @@
 .sidebar {
     color: #fff;
     grid-area: sidebar;
+    & article {
+        margin-bottom: 2rem
+    }
 }
+
+

@@ -11,6 +11,7 @@
     img {
         width: 100%;
         height: auto;
+        cursor: grab;
     }
     /* anchor-name: --anchor-abilities; */
 }
@@ -41,4 +42,5 @@
 
 .ability img {
     width: 100%;
+    cursor: grab;
 }
