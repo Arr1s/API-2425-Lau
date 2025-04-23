@@ -1,37 +1,38 @@
-<section>
-    <article>
-        <h2>Your Team. Your Tactics. Your Edge.</h2>
-        <p>
-            Welcome to the ultimate strategy platform built for Valorant competitors. Whether you're a team captain,
-            coach, or dedicated IGL, this is your space to plan, refine, and execute winning strats.
-        </p>
-        <p>
-            Create detailed site takes, defensive setups, and mid-round protocols with intuitive tools tailored for
-            high-level play. Map out utility usage, player roles, and timing down to the second — then share it
-            seamlessly with your squad.
-        </p>
-        <p>
-            From ranked grind to tournament play, your preparation starts here. Outthink. Outplay. Outlast.
-        </p>
-
+<section class="content">
     </article>
-    <article>
-        <form method="post" actions="/">
-            <label for="chooseMap">Choose the map:</label>
+
+    <h2>Your Team. Your Tactics. Your Edge.</h2>
+    <p>
+        Welcome to the ultimate strategy platform built for Valorant competitors. Whether you're a team captain,
+        coach, or dedicated IGL, this is your space to plan, refine, and execute winning strats.
+    </p>
+
+</article>
+    <article class="chooseMap">
+        {% for map in maps %}
+        {% if map.tacticalDescription == "A/B Sites" %}
+        <div class="mapCard">
+            <img src="{{ map.displayIcon }}" alt="{{ map.displayName }}">
+            <form method="post" actions="/">
+            <input type="radio" id="chooseMap" name="mapID" value="{{ map.uuid }}">
+            <label for="chooseMap">{{ map.displayName }}</label>
+            <button>Kies</button>
+        </form>
+        </div>
+        {% endif %}
+        {% endfor %}
+   
+    {% comment %} <article>
+       
             <select id="chooseMap" name="mapID">
                 {% for map in maps %}
                 {% if map.tacticalDescription == "A/B Sites" %}
                 <option value="{{ map.uuid }}">{{ map.displayName }}</option>
 
-                {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN {%
-                endcomment %}
                 {% endif %}
                 {% endfor %}
-            </select>
-            <input type="text" name="strategyName" placeholder="Strategy name" required />
-            <input type="hidden" name="strategyID" value={{ strategyID }} />
-            <button type="submit">Kies map</button>
-    </article>
+         
+    </article> {% endcomment %}
 
 
     </form>

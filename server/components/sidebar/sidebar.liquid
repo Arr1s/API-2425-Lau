@@ -23,6 +23,16 @@
             <button id="clearAbilities" class="clearAbilities">Verwijder</button>
     </article>
     <article>
+        <search>
+            <form method="post" action="/map/{{ strategy.id }}/search">
+              {% comment %} Name zorgt voor key form + action is voor andere route {% endcomment %}
+            <label for="searchAgent">Zoek een agent:</label>
+              <input type="search" id="searchAgent" name="search" value="{{ query }}" />
+              <button type="submit">Zoek</button>
+            </form>
+          </search>
+    </article>
+    <article>
         <p>
             <button id="start">Start Capture</button>&nbsp;<button id="stop">
               Stop Capture

@@ -3,7 +3,7 @@ console.log("abilities.js loaded");
 const agentCards = document.querySelectorAll(".agentCard");
   agentCards.forEach((card) => {
     const abilities = card.querySelector(".abilities");
-  
+    if (!abilities) return
     // abilities en abilityName in eerste instantie verbergen
     abilities.style.display = "none";
   

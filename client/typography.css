@@ -6,7 +6,8 @@ body {
 .h1 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
-  font-weight: 600
+  font-weight: 600;
+  grid-area: title;
 }
 
 h2 {
@@ -15,3 +16,16 @@ h2 {
   font-weight: 600;
 }
 
+
+.tektur {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+p { 
+  line-height: 1.5rem;
+}

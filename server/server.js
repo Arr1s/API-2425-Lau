@@ -42,9 +42,12 @@ app
     const dataMaps = await fetch(valorantMaps);
     const maps = await dataMaps.json();
     // console.log(maps);
+    const dataAgents = await fetch(valorantAgents);
+    const agents = await dataAgents.json();
+
     const strategyID = new Date().getTime();
     console.log(strategyID);
-    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data, strategyID }));
+    return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', maps: maps.data, strategyID, agents: agents.data }));
   });
 
   app.post('/', async (req, res) => {

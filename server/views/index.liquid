@@ -2,9 +2,11 @@
 
 {% block content %}
 <main class="homepage">
-        <h1 class="h1">{{ title }}</h1>
 
         {% render '../components/createStrategy/createStrategy.liquid', maps: maps, strategyID: strategyID %}
+
+        {% render '../components/selectAgent/selectAgent.liquid', agents: agents, strategy: strategy, showAbilities: false
+         %}
         
         {% endblock %}
 

@@ -6,6 +6,9 @@ import "/server/components/stratmap/stratmap.js"
 import "/server/components/streamCapture/streamCapture.js";
 
 
+
+
+
 console.log("index.js loaded");
 
 

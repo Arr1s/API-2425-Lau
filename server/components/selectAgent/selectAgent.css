@@ -4,9 +4,11 @@
     display: grid;
     grid-area: selectAgent;
     position: relative;
+    margin-top: 2em;
 }
 
 .agentCard {
+    position: relative;
     width: var(--agent-width);
     img {
         width: 100%;
@@ -20,13 +22,13 @@
     position: absolute;
     background-color: cornflowerblue;
     display: flex;
-    max-width: calc(var(--agent-width) * 1.5);
+    max-width: 100%;
     li {
         position: relative;
         width: 25%;
     }
     figure {
-        padding: 1rem;
+        padding: 0.5rem;
         width: 100%;
     }
     figcaption {

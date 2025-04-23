@@ -9,6 +9,7 @@
       grid-template-columns: 1fr;
       grid-template-rows: auto 1fr auto;
       grid-template-areas: 
+      "title"
       "sidebar"
       "stratmap"
       "selectAgent" ;
@@ -19,6 +20,7 @@
       grid-template-columns: 1fr;
       grid-template-rows: auto 1fr auto;
       grid-template-areas: 
+      "title"
       "sidebar"
       "stratmap"
       "selectAgent" ;
@@ -33,23 +35,52 @@
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:
+    'title title'
     'sidebar stratmap'
     'selectAgent selectAgent';
   }
 }
 
 .homepage {
-  & section {
-    width: 100vw;
-  }
-  & article {
-    max-width: 60vw;
-    min-width: 20vw;
-    & p {
-      margin-bottom: 0.5rem;
-    }
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 90vh;
+  grid-template-areas: 
+  "title"
+  "content"
+  "selectAgent" ;
+  & .content {
+    width: 99vw;
+    grid-area: content;
   }
  
+    & p {
+      margin-bottom: 0.5rem;
+  }
+  & hr {
+    color: white;
+    width: 95%;
+  }
   
 }
  
+.chooseMap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+  margin-top: 2em;
+  width: 98vw;
+  & .mapCard {
+    position: relative;
+    width: 90%;
+    img {
+      width: 100%;
+      height: auto;
+      cursor: grab;
+    }
+    /* anchor-name: --anchor-abilities; */
+  }
+}
