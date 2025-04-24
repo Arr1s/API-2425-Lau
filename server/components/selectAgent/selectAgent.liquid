@@ -19,9 +19,19 @@
                 {% endfor %}
               </ul>
               {% endif %}
-              <p>{{ agent.displayName }}</p>
+              
               <img src={{ agent.displayIcon }} alt="" draggable="true" class="agentIcon">
-              <p>{{ agent.role.displayName }}</p>
+              <article>
+                <div>
+                  <h3>name</h3>
+                  <p>{{ agent.displayName }}</p>
+                </div>
+                <div>
+                  <h3>role</h3>
+                  <p>{{ agent.role.displayName }}</p>
+                </div>
+              </article>
+           
 
           </li>
           {% endif %}

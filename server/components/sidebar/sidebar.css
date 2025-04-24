@@ -1,6 +1,9 @@
 .sidebar {
     color: #fff;
+    padding: 1em;
+    background-color: darkgray;
     grid-area: sidebar;
+    clip-path: polygon(0 4%, 34% 0, 67% 3%, 100% 0, 93% 77%, 81% 94%, 42% 91%, 9% 98%);
     & article {
         margin-bottom: 2rem
     }

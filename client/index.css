@@ -34,3 +34,17 @@ main {
 h1, h2, p, figcaption {
   color: var(--color-text);
 }
+
+button {
+  clip-path: polygon(6% 13%, 34% 0, 71% 9%, 100% 4%, 100% 88%, 82% 96%, 42% 94%, 0 100%);
+  padding: 0.3rem 0.7rem;
+  border: none;
+  background-color: lightskyblue;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: lightskyblue;
+  cursor: pointer;
+}

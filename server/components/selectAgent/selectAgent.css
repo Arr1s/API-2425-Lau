@@ -5,6 +5,7 @@
     grid-area: selectAgent;
     position: relative;
     margin-top: 2em;
+    height: 12em;
 }
 
 .agentCard {
@@ -14,6 +15,28 @@
         width: 100%;
         height: auto;
         cursor: grab;
+    }
+    & article {
+        position: absolute;
+        background-color: cornflowerblue;
+        display: flex;
+        max-width: 98%;
+        width: var(--agent-width);
+        & div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 50%;
+            border: 1px solid white;
+            & h3 {
+                font-size: small;
+            }
+            & p {
+                font-weight: bold;
+            }
+        }
     }
     /* anchor-name: --anchor-abilities; */
 }

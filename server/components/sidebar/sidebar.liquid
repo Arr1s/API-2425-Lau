@@ -7,7 +7,7 @@
                 {% if map.tacticalDescription == "A/B Sites" %}
                   
                         <option value="{{ map.uuid }}" {% if strategy.mapID == map.uuid %} selected {% endif %}>
-                            {{ map.displayName }}</option>
+                         <img src="{{ map.displayIcon }}" alt="map van {{ map.displayName }}"> {{ map.displayName }}</option>
                          {% comment %} <img src={{ map.listViewIcon }} alt=""> LATER VOOR ENHANCEMENT CUSTOM DROPDOWN  {% endcomment %}
 
                 {% endif %}
@@ -29,6 +29,7 @@
             <label for="searchAgent">Zoek een agent:</label>
               <input type="search" id="searchAgent" name="search" value="{{ query }}" />
               <button type="submit">Zoek</button>
+            
             </form>
           </search>
     </article>
