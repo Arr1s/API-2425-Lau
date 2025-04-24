@@ -27,6 +27,10 @@
       container-type: inline-size;
       container-name: --strategy;
     }
+    & .sidebar article div {
+      display: flex;
+      flex-direction: row;
+    }
 }
 
 @container --strategy (inline-size > 40em) {
@@ -58,10 +62,7 @@
  
     & p {
       margin-bottom: 0.5rem;
-  }
-  & hr {
-    color: white;
-    width: 95%;
+      max-inline-size: 40%;
   }
   
 }
@@ -83,4 +84,9 @@
     }
     /* anchor-name: --anchor-abilities; */
   }
+}
+
+fieldset {
+  display: flex;
+  justify-content: center;
 }

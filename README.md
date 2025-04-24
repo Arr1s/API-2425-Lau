@@ -54,7 +54,23 @@ The purpose of this app is to serve as a **Valorant strategy tool**, Valorant is
 This project marked my first experience using **Liquid** templates, which required a steep learning curve. Additionally, I transitioned from relying heavily on client-side JavaScript to implementing more functionality on the server side using Node.js. This shift allowed for better performance and a more dynamic application.
 
 ### Challenges with Saving Markers
-One of the most difficult challenges was implementing the feature to save markers on the backend. This required significant effort to design and debug, but it was ultimately a valuable learning experience.
+One of the most difficult challenges was implementing the feature to save markers on the backend. This required significant effort to design and debug, but it was ultimately a valuable learning experience. In order to create markers that wil be saved with the help of **lowdb**, use the input fields below the map. Although there are no labels attached to the input fields, here is the order from right to left:
+1. MarkerID:
+This is the ID of the marker, and has to be done manually for now, but could to be automated in the future.
+
+2. Ability type (optional):
+Here you can choose which ability from the agent you want. The format is "Ability" + (number of the ability). So, for instance, if you want to use the "Wingman" of "Gekko", you'd type: "Ability1". 
+
+3. X coordinates: 
+If think this one is self explantory, it is the coordinate on the X-axis, from the bottom upwards. 
+
+4. Y coordinates: 
+If think this one is self explantory, it is the coordinate on the Y-axis, from the left to right. 
+
+5. AgentID: 
+This is the ID of the agent from the valorantAPI. You can simply copy paste it.  
+
+Once you're done, press on the button "save" in order to save the marker. 
 
 ### Styling and Time Constraints
 Due to the time spent on backend development, styling was deprioritized and remains a work in progress. While functional, the current design could benefit from further refinement to improve the user experience.

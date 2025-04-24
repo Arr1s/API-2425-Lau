@@ -1,12 +1,34 @@
 .sidebar {
     color: #fff;
     padding: 1em;
-    background-color: darkgray;
     grid-area: sidebar;
-    clip-path: polygon(0 4%, 34% 0, 67% 3%, 100% 0, 93% 77%, 81% 94%, 42% 91%, 9% 98%);
+    /* clip-path: polygon(0 4%, 34% 0, 67% 3%, 100% 0, 93% 77%, 81% 94%, 42% 91%, 9% 98%); */
     & article {
-        margin-bottom: 2rem
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        & div {
+            margin-top: 0.2em;
+        }
+        & button {
+            width: fit-content;
+
+        }
+        & select, input {
+            margin-right: 0.5em;
+        }
+        & label, h3 {
+            font-size: 1.2em;
+           
+        }
+        & h3 {
+            margin-bottom: 0.2em;
+        }
     }
 }
 
+#video {
+    max-width: 360px;
+    border: white solid 1px;
+  }
 

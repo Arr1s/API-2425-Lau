@@ -4,7 +4,7 @@ body {
 }
 
 .h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
   grid-area: title;
@@ -28,4 +28,5 @@ h2 {
 
 p { 
   line-height: 1.5rem;
+
 }

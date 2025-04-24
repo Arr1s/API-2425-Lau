@@ -74,6 +74,7 @@ app.get('/map/:id/', async (req, res) => {
   const id = req.params.id;
   const strategy = db.data.find((item) => item.id == id);
   // const strategyNotFound = alert('StrategyID not found');
+  console.log("strategy:", strategy);
   if (!strategy) {
     return res.redirect('/', { status: 402 });
   }

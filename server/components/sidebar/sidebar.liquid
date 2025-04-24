@@ -2,7 +2,8 @@
     <article>
         <form method="post" action="/map/{{ strategy.id }}">
             <label for="chooseMap">Choose the map:</label>
-            <select id="chooseMap" name=mapID>
+            <div>
+              <select id="chooseMap" name=mapID>
                 {% for map in maps %}
                 {% if map.tacticalDescription == "A/B Sites" %}
                   
@@ -14,32 +15,45 @@
                 {% endfor %}
             </select>
             <button type="submit">Kies map</button>
+            </div>
+           
     
         </form>
 
     </article>
     <article>
             <label for="clearAbilities">Verwijder alles: </label>
-            <button id="clearAbilities" class="clearAbilities">Verwijder</button>
+            <div>
+              <button id="clearAbilities" class="clearAbilities">Verwijder</button>
+            </div>
+           
     </article>
     <article>
         <search>
             <form method="post" action="/map/{{ strategy.id }}/search">
               {% comment %} Name zorgt voor key form + action is voor andere route {% endcomment %}
             <label for="searchAgent">Zoek een agent:</label>
+            <div>
               <input type="search" id="searchAgent" name="search" value="{{ query }}" />
               <button type="submit">Zoek</button>
+            </div>  
+          
             
             </form>
           </search>
     </article>
     <article>
-        <p>
-            <button id="start">Start Capture</button>&nbsp;<button id="stop">
-              Stop Capture
-            </button>
-          </p>
-          
-          <video id="video" autoplay></video>
+      <h3>Stream your strategy:</h3>
+      <video id="video" autoplay></video>
+      <div>
+       
+
+          <button id="start">Start streaming</button>
+          <button id="stop">Stop streaming</button>
+    
+        
+        
+      </div>
+      
     </article>
 </aside>

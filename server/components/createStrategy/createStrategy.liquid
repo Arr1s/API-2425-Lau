@@ -1,31 +1,41 @@
 <section class="content">
-
-<form method="post" actions="/">
-<article class="chooseMap">
-    
-    {% for map in maps %}
-    {% if map.tacticalDescription == "A/B Sites" %}
-    <div class="mapCard">
-        <img src="{{ map.displayIcon }}" alt="{{ map.displayName }}">
-       
-        <input type="radio" id="chooseMap" name="mapID" value="{{ map.uuid }}">
-        <input type="hidden" name="strategyID" value="{{ strategyID }}">
-        <label for="chooseMap">{{ map.displayName }}</label>
-       
-       
-        </div>
-    {% endif %}
-    {% endfor %}
-    <button>Kies</button>
- 
-</article>
-</form>
-<article>
-    <h2>Your Team. Your Tactics. Your Edge.</h2>
+    <h1 class="h1">Create your strategy!</h1>
     <p>
         Welcome to the ultimate strategy platform built for Valorant competitors. Whether you're a team captain,
         coach, or dedicated IGL, this is your space to plan, refine, and execute winning strats.
     </p>
+
+<article>
+    <form method="post" actions="/">
+    <fieldset>
+        <input type="text" name="strategyName" placeholder="Naam van de strategie">
+        <button>Kies</button>
+    </fieldset>
+   
+
+    <div class="chooseMap">
+    {% for map in maps %}
+    {% if map.tacticalDescription == "A/B Sites" %}
+    
+        <div class="mapCard">
+      
+        <img src="{{ map.displayIcon }}" alt="{{ map.displayName }}">
+       
+        <input type="radio" id="{{ map.uuid }}" name="mapID" value="{{ map.uuid }}">
+        
+        <label for="{{ map.uuid }}">{{ map.displayName }}</label>
+       
+       
+       
+        </div>
+   
+   
+      
+    {% endif %}
+    {% endfor %}
+    </div>
+    <input type="hidden" name="strategyID" value="{{ strategyID }}">
+    </form>
 </article>
             
 
