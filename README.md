@@ -1,14 +1,20 @@
 # API-2425-Lau
 
 ## Introduction
-Welcome to the **API-2425-Lau** project! This application is designed to [insert a brief description of what the app does]. It provides [key features or functionality] to help users [specific purpose or goal]. Whether you're a beginner or an experienced developer, this project is a great starting point for exploring modern web development.
+Welcome to the **API-2425-Lau** project! This application is designed to The purpose of this app is to serve as a **Valorant strategy tool**, Valorant is an FPS shooter game I've played for a while, inspired by [ValoPlant](https://valoplant.gg/). The development journey has been both challenging and rewarding.. It provides choosing each map in the current competitive pool, all the agents and their abilities to help users create an startegy you can use for premier or competitive in general, using the markers on your map. Once you're done you can even stream your strategy to your friends!
+Whether you're a beginner or an experienced developer, this project is a great starting point for exploring modern web development.
 
 ## Packages Used
 This project leverages the following key packages:
 - **dotenv**: For managing environment variables.
 - **cors**: To enable Cross-Origin Resource Sharing.
 - **nodemon**: For automatic server restarts during development.
-- [Add any other packages used in the project.]
+
+## API's Used
+This project integrates several APIs to provide its functionality:
+- **StreamCapture Web API**: Enables real-time streaming of strategies to friends or teammates.
+- **Valorant API**: Provides data on agents, abilities, and maps to ensure accurate and up-to-date information.
+- **LowDB**: Used for lightweight local storage of markers and other data.
 
 ## Installation Guide
 To get started as a developer, follow these steps:
@@ -44,9 +50,6 @@ Feel free to fork the repository, make changes, and submit a pull request. Contr
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
-
-## Purpose
-The purpose of this app is to serve as a **Valorant strategy tool**, Valorant is an FPS shooter game I've played for a while, inspired by [ValoPlant](https://valoplant.gg/). The development journey has been both challenging and rewarding.
 
 ## Progress
 
